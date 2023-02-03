@@ -38,6 +38,7 @@ var cumleler = [
 	["Nedendi?"],
 	["Yoruldum."]
 	];
+
 	
 	var sebzeler = ['🍅', '🍄', '🥦', '🥒', '🌽', '🥕', '🥑'];
 	var meyveler = ['🍇','🍈','🍉','🍊','🍋','🍌','🍍','🥭','🍎','🍐','🍑','🍒','🍓','🥝','🥥']
@@ -75,22 +76,34 @@ function cumleKur(birinci, ikinci="", ucuncu="", dorduncu="", besinci=""){
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 1 parametre göndererek "Hello World!" stringini elde edin, sonucu konsolde gözlemleyin */
 
-
+cumleKur = string => {
+	console.log (string);
+}
+cumleKur("Hello World!");
 
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 2 parametre göndererek "Hello World!" stringini elde edin, sonucu konsolde gözlemleyin */
 
+cumleKur = (string1, string2) => {
+	return string1 + string2
+}
+console.log (cumleKur("Hello", " World!"));
 
 
 
 /* (Oto test var) cumleKur fonksiyonuna 5 parametre göndererek "Ben iyi bir yazılımcı olacağım!" stringini elde edin, sonucu `bircumle` değişkenine atayın ve konsolde gözlemleyin */
+
 var bircumle;
 
-/* kodlar buraya */
+cumleKur = (string1, string2, string3, string4, string5) => {
+	bircumle = string1 + string2 + string3 + string4 + string5;
+	return bircumle;
+}
+console.log (cumleKur("Ben", " iyi", " bir", " yazılımcı", " olacağım!"));
 
 
 
-//		Sayfanın en üstünde global olarak tanımlanmış `cumleler` adında bir dizi bulunmaktadır. Bu dizinin içinde en çok 5 en az 1 adet string bulunan diziler bulunmaktadır. Aşağıdaki görevlerde aksi belirtilmedikçe bu dizi kullanılacaktır.
+	//		Sayfanın en üstünde global olarak tanımlanmış `cumleler` adında bir dizi bulunmaktadır. Bu dizinin içinde en çok 5 en az 1 adet string bulunan diziler bulunmaktadır. Aşağıdaki görevlerde aksi belirtilmedikçe bu dizi kullanılacaktır.
 
 /* 	GÖREV 1:
 		cumlelereDonustur fonksiyonuna aşağıdaki yönergeleri uygulayın.
@@ -102,11 +115,15 @@ var bircumle;
 			4. Oluşturulan her cümle yeni bir dizi oluşturulup o dizinin içine aktarılacak. 
 			5. Oluşturulan yeni dizi döndürülecek.
 	*/
-	
 
-function cumlelereDonustur(/* kodlar buraya */ ){
-	/* kodlar buraya */
+function cumlelereDonustur(dizi, ayrac=","){
+	let yeniDizi = dizi.map((item) => {
+		return item.join (ayrac);
+	}) 
+	return yeniDizi;
+	
 }
+console.log(cumlelereDonustur(cumleler, " "));
 
 
 
@@ -120,9 +137,15 @@ function cumlelereDonustur(/* kodlar buraya */ ){
 			6. Oluşturulan paragraf döndürülecek
 	*/
 	
-function paragrafOlustur(/* kodlar buraya */ ){
-	/* kodlar buraya */ 
+function paragrafOlustur(dizi, cb_cumleKur, cb_cumlelereDonustur){
+	let yeniDizi = cb_cumlelereDonustur(dizi, " ");
+	let paragraf = cb_cumleKur(yeniDizi[1], yeniDizi[3], yeniDizi[5], yeniDizi[7], yeniDizi[9]); 
+	return paragraf;
 }
+console.log (paragrafOlustur(cumleler, cumleKur, cumlelereDonustur));
+
+
+
 
 
 /* 	GÖREV 3:
@@ -130,22 +153,17 @@ function paragrafOlustur(/* kodlar buraya */ ){
 			3a. meyveler dizisinin ilk ve son elemanlarını diziden çıkartın. (.pop ve .shift metodlarını kullanın)
  */
 //3a çözümü
-/* kodlar buraya */
+console.log(meyveler.pop());
+console.log(meyveler.shift());
 
 
-
-
-
- 
 /* 			3b.  Bir tavşan ve bir kirpi arkadaşlar sebzeler dizimizin peşine düştü. Tavşan => 🐇 , Kirpi=> 🦔 , Tavşanla kirpi sebzeleri ele geçirmek için bir plan kurdular. Tavşan diziye önden saldıracak, kirpi ise arkalarından dolaşacak. Varsayalım ki arkadaşların planları başarılı oldu. Tavşanı dizinin ilk elemanına 🐇, Kirpiyi dizinin son elemanına ekleyin 🦔 
 */
 //3b çözümü
-/* kodlar buraya */
 
 
-
-
-
+console.log(sebzeler.unshift("🐇"));
+console.log(sebzeler.push("🦔"));
 
 
 
@@ -155,6 +173,9 @@ function paragrafOlustur(/* kodlar buraya */ ){
 /* kodlar buraya */
 
 var manav;
+
+manav= meyveler.concat(sebzeler);
+console.log(manav);
 
 
 
@@ -170,10 +191,23 @@ var manav;
 			4. elde edilen string döndürülecek
  */
 
-function emojileriDonustur(/* kodlar buraya */){
-/* kodlar buraya */
 
+var text = "Nasılsın :d Bugünkü olay çok komikti :p ama sonra çok şaşırdık :o ama yine de seviliyorsun <3";
+
+function emojileriDonustur(mesaj, object){
+	for (let key in object) {
+		mesaj = mesaj.replaceAll (key.toUpperCase(), object[key])
+		mesaj = mesaj.replaceAll (key.toLowerCase(), object[key])
+	}
+		return mesaj;
 }
+console.log(emojileriDonustur(text, emojiler));
+
+
+
+
+
+
 
 
 
