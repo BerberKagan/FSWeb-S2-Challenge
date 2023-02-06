@@ -76,18 +76,12 @@ function cumleKur(birinci, ikinci="", ucuncu="", dorduncu="", besinci=""){
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 1 parametre göndererek "Hello World!" stringini elde edin, sonucu konsolde gözlemleyin */
 
-cumleKur = string => {
-	console.log (string);
-}
-cumleKur("Hello World!");
+console.log(cumleKur("Hello"," World!"))
 
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 2 parametre göndererek "Hello World!" stringini elde edin, sonucu konsolde gözlemleyin */
 
-cumleKur = (string1, string2) => {
-	return string1 + string2
-}
-console.log (cumleKur("Hello", " World!"));
+console.log(cumleKur("Hello"," World!"))
 
 
 
@@ -95,11 +89,9 @@ console.log (cumleKur("Hello", " World!"));
 
 var bircumle;
 
-cumleKur = (string1, string2, string3, string4, string5) => {
-	bircumle = string1 + string2 + string3 + string4 + string5;
-	return bircumle;
-}
-console.log (cumleKur("Ben", " iyi", " bir", " yazılımcı", " olacağım!"));
+bircumle = cumleKur("Ben", " iyi", " bir", " yazılımcı", " olacağım!");
+
+console.log(bircumle);
 
 
 
